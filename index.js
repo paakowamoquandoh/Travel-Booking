@@ -1,15 +1,18 @@
 const express = require("express");
 const dotenv = require("dotenv");
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const app = express();
 dotenv.config();
 
-try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/test');
+const connect = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO);
   } catch (error) {
-    handleError(error);
+    throw(error);
   }
+}
 
 app.listen(8800, () => {
+  connect();
     console.log("Connected to LasVegas leisure center");
 });

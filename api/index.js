@@ -1,6 +1,7 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
+import express from 'express';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import authRoute from "./routes/auth.js";
 const app = express();
 dotenv.config();
 
@@ -14,18 +15,23 @@ const connect = async () => {
 }
 
 mongoose.connection.on("disconnected", () => {
-  console.log("mongo disconnected");
+  console.log("lasvegas disconnected");
 })
 
-mongoose.connection.on("connected", () => {
-  console.log("mongo is connected");
-})
+// mongoose.connection.on("connected", () => {
+//   console.log("lasvegas connected");
+// })
 
-app.get("/", (req,res) => {
-  res.send("something")
-})
+// app.get("/", (req,res) => {
+//   res.send("something")
+// })
+
+
+//middlewares
+app.use("auth", authRoute)
 
 app.listen(8800, () => {
   connect()
   console.log("Connected to LasVegas leisure center");
 });
+  

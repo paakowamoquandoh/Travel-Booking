@@ -22,7 +22,7 @@ const connect = async () => {
 
 mongoose.connection.on("disconnected", () => {
   console.log("Las vegas disconnected!");
-});
+});  
 
 //middlewares
 app.use(cors())

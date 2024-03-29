@@ -24,7 +24,7 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  const { data, loading, error } = useFetch(`/hotels/find/${id}`);
+  const { data, loading, error } = useFetch(`http://localhost:8800/api/hotels/find/${id}`)
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -38,6 +38,7 @@ const Hotel = () => {
   }
 
   const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -135,9 +136,8 @@ const Hotel = () => {
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
-                  nights)
-                </h2>
+  <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
+</h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
             </div>

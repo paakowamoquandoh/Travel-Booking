@@ -19,7 +19,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 
     const date = new Date(start.getTime());
 
-    const dates = [];
+    const dates = []; 
 
     while (date <= end) {
       dates.push(new Date(date).getTime());

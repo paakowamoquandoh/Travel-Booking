@@ -28,7 +28,7 @@ const Login = () => {
         } catch (err) {
           dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
         }
-      };
+      }; 
 
   return (
     <div className="login">

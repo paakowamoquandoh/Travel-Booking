@@ -1,12 +1,11 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
+import { userColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import useFetch from "../../hooks/useFetch"
 
 const Datatable = () => {
-  const {data, loading, error} = useFetch("http://localhost:8800/api/users")
+  const {data, loading, error} = useFetch("http://localhost:8800/api/users/")
 
   const handleDelete = (id) => {
     
@@ -20,7 +19,7 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to={`/users/${params.row.id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -34,6 +33,10 @@ const Datatable = () => {
       },
     },
   ];
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
     <div className="datatable">
       <div className="datatableTitle">
@@ -49,7 +52,7 @@ const Datatable = () => {
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
-        getRowId={row=>row._ids}
+        getRowId={(row)=>row._id}
       />
     </div>
   );

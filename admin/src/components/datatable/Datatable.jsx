@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch"
 
 const Datatable = () => {
-  const {data, loading, error} = useFetch("http://localhost:8800/api/users/")
+  const {data, loading, error} = useFetch("http://localhost:8800/api/users")
 
   const handleDelete = (id) => {
     

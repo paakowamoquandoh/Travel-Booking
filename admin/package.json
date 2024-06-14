@@ -48,5 +48,5 @@
   "description": "admin dashboard",
   "main": "index.js",
   "author": "felix",
-  "license": "MIT"
+  "license": "MIT","proxy":"http://localhost:8800/api"
 }

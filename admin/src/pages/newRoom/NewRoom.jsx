@@ -10,7 +10,7 @@ import axios from "axios";
 
 const NewRoom = () => {
   const [info, setInfo] = useState({});
-  const [hotelId, setHotelId] = useState(undefined);
+  const [hotelid, setHotelId] = useState(undefined);
   const [rooms, setRooms] = useState([]);
 
   const { data, loading, error } = useFetch("http://localhost:8800/api/hotels", {withCredentials:true});
@@ -23,7 +23,7 @@ const NewRoom = () => {
     e.preventDefault();
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     try {
-      await axios.post(`http://localhost:8800/api/rooms/${hotelId}`, { ...info, roomNumbers });
+      await axios.post(`http://localhost:8800/api/rooms/${hotelid}`, { ...info, roomNumbers }, {withCredentials:true});
     } catch (err) {
       console.log(err);
     }

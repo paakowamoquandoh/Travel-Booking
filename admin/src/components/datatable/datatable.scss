@@ -1,6 +1,10 @@
 .datatable {
   height: 600px;
   padding: 20px;
+
+  .capitalise{
+    text-transform: capitalize;
+  }
   
   .datatableTitle{
     width: 100%;

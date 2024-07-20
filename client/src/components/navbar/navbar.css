@@ -41,3 +41,10 @@
   align-items: center;
   gap: 0.4rem;
 }
+
+
+@media screen and (max-width: 550px) {}
+
+@media screen and (max-width: 850px) {}
+
+@media screen and (max-width: 1200px) {}
